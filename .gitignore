@@ -1,3 +1,8 @@
+#IDE-specific
+.vs/*
+.idea/*
+.vscode/*
+
 # Prerequisites
 *.d
 
