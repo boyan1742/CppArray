@@ -8,7 +8,7 @@ class Array
 {
     static const int CAPACITY_PADDING = 10;
 
-    T *m_items;
+    T *m_items = nullptr;
     size_t m_currentIndex;
     size_t m_capacity;
     bool m_frozen;
@@ -134,7 +134,7 @@ template<typename T>
 T &Array<T>::operator[](size_t index)
 {
     if (index >= m_currentIndex)
-        throw IndexOutOfRangeException();
+        throw IndexOutOfRangeException("Index out of range exception!");
 
     return m_items[index];
 }
@@ -142,7 +142,7 @@ template<typename T>
 const T &Array<T>::operator[](size_t index) const
 {
     if (index >= m_currentIndex)
-        throw IndexOutOfRangeException();
+        throw IndexOutOfRangeException("Index out of range exception!");
 
     return m_items[index];
 }
@@ -239,6 +239,7 @@ template<typename T>
 void Array<T>::Free()
 {
     delete[] m_items;
+    m_items = nullptr;
     m_capacity = m_currentIndex = 0;
     m_frozen = true;
 }
